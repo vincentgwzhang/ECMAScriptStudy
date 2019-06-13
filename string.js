@@ -39,3 +39,8 @@
 // 等同于
     //alert(123)
 }
+
+{
+    //console.log('x'.padStart(5, 'ab'));//ababx
+    //console.log('x'.padEnd(5, 'ab'));//xabab
+}
