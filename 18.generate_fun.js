@@ -46,11 +46,124 @@
 
     let hw = gen();
 
-    obj = hw.next();
-    console.log(obj.value + "|" + obj.done);
-    console.log("===============================================");
+    // obj = hw.next();
+    // console.log(obj.value + "|" + obj.done);//579|false
+    // console.log("===============================================");
+    //
+    // obj = hw.next();
+    // console.log(obj.value + "|" + obj.done);//undefined|true
+    // console.log("===============================================");
+}
 
-    obj = hw.next();
-    console.log(obj.value + "|" + obj.done);
-    console.log("===============================================");
+{
+    function* foo() {
+        yield 1;
+        yield 2;
+        yield 3;
+        yield 4;
+        yield 5;
+        return 6;
+    }
+
+    for (let v of foo()) {
+        //Because when it gets 6, the done result would be true, then loop will be end immediately.
+        //console.log(v);
+    }
+}
+
+{
+    /**
+     *
+     * 一旦抛出exception, 那么就所有结束
+     * @returns {IterableIterator<number>}
+     */
+    function* g() {
+        yield 1;
+        console.log('throwing an exception');
+        throw new Error('generator broke!');
+        yield 2;
+        yield 3;
+    }
+
+    function log(generator) {
+        var v;
+        console.log('starting generator');
+        try {
+            v = generator.next();
+            console.log('第一次运行next方法', v);//第一次运行next方法 { value: 1, done: false }
+        } catch (err) {
+            console.log('捕捉错误', v);
+        }
+        try {
+            v = generator.next();
+            console.log('第二次运行next方法', v);
+        } catch (err) {
+            console.log('捕捉错误 22333: ', v);//捕捉错误 22333:  { value: 1, done: false }
+        }
+        try {
+            v = generator.next();
+            console.log('第三次运行next方法', v);//第三次运行next方法 { value: undefined, done: true }
+        } catch (err) {
+            console.log('捕捉错误', v);
+        }
+        console.log('caller done');
+    }
+
+    //log(g());
+}
+
+{
+    function* gen() {
+        yield 1;
+        yield 2;
+        yield 3;
+    }
+
+    var g = gen();
+
+    //console.log(g.next());// { value: 1, done: false }
+    //console.log(g.return('foo'));// { value: "foo", done: true }
+    //console.log(g.next());// { value: undefined, done: true }
+}
+
+{
+    function* foo() {
+        yield 'a';
+        yield 'b';
+    }
+
+    function* bar() {
+        yield 'x';
+        for (let i of foo()) {
+            //console.log(i);
+        }
+        yield 'y';
+    }
+
+    for (let v of bar()){
+        //console.log(v);//x a b y
+    }
+}
+
+{
+    function* foo() {
+        yield 2;
+        yield 3;
+        return "foo";
+    }
+
+    function* bar() {
+        yield 1;
+        var v = yield* foo();
+        console.log("v: " + v);
+        yield 4;
+    }
+
+    var it = bar();
+
+    // console.log(it.next());// {value: 1, done: false}
+    // console.log(it.next());// {value: 2, done: false}
+    // console.log(it.next());// {value: 3, done: false}
+    // console.log(it.next());// "v: foo" // {value: 4, done: false}
+    // console.log(it.next());// {value: undefined, done: true}
 }
