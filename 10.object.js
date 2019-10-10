@@ -1,3 +1,114 @@
+{
+    const foo = 'bar';
+    const baz = {foo};
+    //console.log(baz);
+
+// 等同于
+    //const baz = { foo: 'bar' };
+}
+
+{
+    function f(x, y) {
+        return {x, y};
+    }
+
+// 等同于
+
+    function f(x, y) {
+        return {x: x, y: y};
+    }
+
+    f(1, 2) // Object {x: 1, y: 2}
+}
+
+
+//JavaScript 定义对象的属性，有两种方法。
+{
+    let obj = {};
+    // 方法一
+    obj.foo = true;
+
+// 方法二
+    obj['a' + 'bc'] = 123;
+}
+
+{
+    let lastWord = 'last word';
+
+    const a = {
+        'first word': 'hello',
+        [lastWord]: 'world'
+    };
+
+    a['first word'] // "hello"
+    a[lastWord] // "world"
+    a['last word'] // "world"
+}
+
+
+{
+    //ES6 一共有 5 种方法可以遍历对象的属性。
+    //for...in
+    //Object.keys(obj)
+    //Object.getOwnPropertyNames(obj)
+    //Object.getOwnPropertySymbols(obj)
+    //Reflect.ownKeys(obj)
+}
+
+
+{
+    //强行加为父类的两个个方法：
+
+    //方法1：
+    const proto = {
+        foo: 'hello'
+    };
+
+    const obj = {
+        foo: 'world',
+        find() {//注意，super关键字表示原型对象时，只能用在对象的方法之中，用在其他地方都会报错。
+            return super.foo;
+        }
+    };
+
+    Object.setPrototypeOf(obj, proto);
+    //console.log(obj.find());
+}
+
+{
+
+    // 方法2
+    let o1 = { a: 1 };
+    let o2 = { b: 2 };
+    o2.__proto__ = o1;
+    // console.log(o2.b);
+    // console.log(o2.a);
+}
+
+
+
+{
+    let { x, y, ...z } = { x: 1, y: 2, a: 3, b: 4 };
+    // x // 1
+    // y // 2
+    // z // { a: 3, b: 4 }
+    // console.log(z);
+}
+
+//扩展运算符
+{
+    //case 1:
+    let z = { a: 3, b: 4 };
+    let n = { ...z };
+    // console.log(n);//{ a: 3, b: 4 }
+}
+
+{
+    //case 2:
+    let foo = { ...['a', 'b', 'c'] };
+    // console.log(foo);//{ '0': 'a', '1': 'b', '2': 'c' }
+}
+
 //http://es6.ruanyifeng.com/#docs/object
 
 //1, 属性的简洁表示法

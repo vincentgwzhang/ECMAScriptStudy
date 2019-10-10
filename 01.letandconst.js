@@ -31,7 +31,7 @@ function bar(x = 2, y = x) {
     return [x, y];
 }
 let m = bar(); // [2, 2]
-//console.log(m[0]);//返回的是数组
+//console.log(Array.isArray(m));//true
 
 //////////////////////////////////////////////////////////////////////
 //var 允许重复声明变量， let 不允许
@@ -52,7 +52,7 @@ var x12 = "cscsc";
 //导致内层的tmp变量覆盖了外层的tmp变量。
 var tmp222 = new Date();
 function f() {
-    //console.log(tmp222);
+    //console.log(tmp222);undefined
     if (false) {
         var tmp222 = 'hello world';
     }
@@ -91,14 +91,14 @@ function af1() {
     console.log('I am outside!');
 }
 
-let override = false;
+let override = true;
 if (override) {
     // 即使重新定义了af1  函数
     function af1() {
         console.log('I am inside!');
     }
 }
-af1();
+//af1();
 
 ///////////////////////////////////////////////////////////////////////
 // let 还能作为函数的句柄，进而调用函数
