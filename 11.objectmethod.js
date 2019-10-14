@@ -107,7 +107,7 @@
          */
         Reflect.ownKeys(childRef).forEach(function (item) {
             // console.log(item);
-        })
+        });
 
         /**
          *
@@ -144,7 +144,7 @@
         }
         let targetRef2 = cloneObject(childRef);
         for (let attributeName in targetRef2) {
-            console.log(attributeName + ":" + typeof targetRef2[attributeName]);
+            //console.log(attributeName + ":" + typeof targetRef2[attributeName]);
         }
     }
 }
