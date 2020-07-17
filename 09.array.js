@@ -68,7 +68,7 @@
 }
 
 {
-    //console.log(["a","b","c"].toString());
+    // console.log(["a","b","c"].toString());
 }
 
 {
@@ -99,24 +99,17 @@
 
     //reduce
     {
-        let sum = arr.reduce(function (total, item) {
-            //console.log("counting:" + item);
-            total = total + item;
-            return total;
-        });
+        let sum = arr.reduce((total, item) => total + item);
         //console.log(sum);
     }
 
 
     //filter
     {
-        let sum = arr.filter(function (value, index, arr) {
-            return index % 2 == 0;
-        }).reduce(function (total, item) {
-            total = total + item;
-            return total;
-        });
-        // console.log(sum);// == 1 + 3 + 5 + 7 + 9 = 25
+        let filter = (value, index, values) => index % 2 == 0;
+        let accumulate = (total, value) => total + value;
+        let sum = arr.filter(filter).reduce(accumulate);
+        console.log(sum);// == 1 + 3 + 5 + 7 + 9 = 25
     }
 
     //every
