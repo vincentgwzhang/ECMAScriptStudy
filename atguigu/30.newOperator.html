@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>next operator</title>
+</head>
+
+<body>
+    <script>
+        function main(config) {
+            let max = config?.db?.cache?.age?.max;
+            console.log(max);
+        }
+
+        main({
+            db: {
+                host: '127.0.0.1',
+                cache: {
+                    mem: 127,
+                    age: {
+                        max: 10
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

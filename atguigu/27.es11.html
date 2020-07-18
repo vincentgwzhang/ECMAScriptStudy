@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES 11 基本知识</title>
+</head>
+
+<body>
+    <script>
+        // 私有属性
+        class Person {
+            name; //公有属性
+            #age; // 私有属性, in Java, like private int age;
+            constructor(name, age, weight) {
+                this.name = name;
+                this.#age = age;
+                this.weight = weight;
+            }
+
+			displayAge() {
+				console.log(this.#age);
+			}
+        }
+
+        let girl = new Person('abc', 21, 56);
+        girl.displayAge()
+    </script>
+</body>
+
+</html>

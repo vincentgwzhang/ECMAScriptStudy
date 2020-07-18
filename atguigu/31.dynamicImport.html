@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>matchAll</title>
+</head>
+
+<body>
+    <input type="button" id="btn" value="Click me" />
+    <script>
+        let btn = document.getElementById('btn');
+        btn.onclick = function() {
+            import ('./31.dynamicImport.js').then(module => {
+                module.hello();
+
+                let n = 512n; //大整形, 不能直接和普通 int 做运算
+                console.log(n);
+				console.log(BigInt(512));
+
+				console.log(globalThis);
+            });
+        }
+    </script>
+</body>
+
+</html>

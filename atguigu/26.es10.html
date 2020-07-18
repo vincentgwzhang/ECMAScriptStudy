@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES 10 基本知识</title>
+</head>
+
+<body>
+    <script>
+        // input parameter is a-two-demision array, or map
+        // output parameter is an object
+        let result = Object.fromEntries([
+            ['key1', 'value1'],
+            ['key2', 'value2'],
+        ]);
+
+        console.log(result['key2']);
+
+        let map = new Map();
+        map.set('key3', 'value3');
+        let obj2 = Object.fromEntries(map);
+        console.log(obj2['key3']);
+
+
+
+
+
+        // input parameter is an object
+        // output is array
+        let arr = Object.entries({
+            name: "尚硅谷"
+        });
+        console.log(arr[0][0]);
+
+        console.log('    aaa    '.trimStart().length);
+        console.log('    aaa    '.trimEnd().length);
+        console.log('    aaa    '.trim().length);
+
+
+        // flat 和 flatmap
+        let arrFlat = [1, 2, 3, 4, [8, 9]];
+        console.log(arrFlat.flat());
+
+        let arrFlat2 = [1, 2, 3, 4, [8, 9, [5, 6]]];
+        console.log(arrFlat2.flat(2)); //2 代表向下降维 2层
+
+        let arr3 = [1, 2, 3, 4];
+        console.log(arr3.map(v => v * 10));
+
+        let arr4 = [
+            [1],
+            [2],
+            [3],
+            [4]
+        ];
+        console.log(arr4.flatMap(v => v * 10)); // 先 map, 然后 flat
+
+
+        // symbol 的字符串描述
+        let s = Symbol('abc');
+        console.log(s.description);
+    </script>
+</body>
+
+</html>
