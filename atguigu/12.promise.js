@@ -8,15 +8,15 @@ const fs = require('fs');
 // 下面使用 promise 封装
 {
     const p = new Promise(function(resolve, reject) {
-        fs.readFile('/home/vzhang/workspace/self/ECMAScriptStudy/atguigu/text1.text', (err, data) => {
+        fs.readFile(__dirname + '/text1.text', (err, data) => {
             if (err) reject('error during read file');
-            resolve(data.toString());
+            resolve(data.toString() + '++++abc');
         });
     });
 
     p.then(value => {
         console.log('read success !!');
-        console.log(value);
+        console.log(value + "==> end");
     }, reason => {
         console.log('read fail !!');
         console.log(reason);
