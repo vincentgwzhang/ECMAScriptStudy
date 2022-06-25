@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/632691987/ECMAScriptStudy#readme",
   "dependencies": {
-    "node-fetch": "^2.6.1",
+    "node-fetch": "^2.6.7",
     "request": "^2.88.2",
     "sync-request": "^6.1.0"
   }
