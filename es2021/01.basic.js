@@ -1,6 +1,6 @@
 // x &&= y ====> is ==========> when x is true, then x = y
 
-let a = 1;
+let a = 3;
 a &&= 2;
 console.log(a);
 
