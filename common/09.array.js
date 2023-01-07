@@ -23,8 +23,23 @@
     //flat()默认只会“拉平”一层，如果想要“拉平”多层的嵌套数组，
     // 可以将flat()方法的参数写成一个整数，表示想要拉平的层数，默认为1。
     //[1, 2, [3, [4, 5]]].flat()
+    //[1, 2, [3, [4, 5]]].flat(Infinity);
 }
-
+{
+    // 利用递归，把一个多维数组改成一维
+    const res5 = [];
+    const fn = arr => {
+      for (let i = 0; i < arr.length; i++) {
+        if (Array.isArray(arr[i])) {
+          fn(arr[i]);
+        } else {
+          res5.push(arr[i]);
+        }
+      }
+    }
+    // fn(arr);
+    
+}
 {
     function displayNumber(x) {
         //console.log(x);

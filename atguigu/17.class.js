@@ -9,7 +9,7 @@
     }
 
     let phone = new Phone('a', 99);
-    //console.log(phone);
+    phone.call();
 }
 
 {
@@ -31,8 +31,4 @@
     Phone.staticProperty = 'static value';
 
     console.log(Phone.staticProperty);
-}
-
-{
-
 }
